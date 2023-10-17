@@ -26,12 +26,20 @@ const modalStyle = {
   },
 };
 
+const getOrdersFromLocalStorage = () => {
+  const ordersJSON = localStorage.getItem('orders');
+  console.log(ordersJSON)
+  return ordersJSON ? JSON.parse(ordersJSON) : [];
+};
+
 const MyOrdersModal = ({ isOpen, onRequestClose }) => {
+  const orders = getOrdersFromLocalStorage();
+
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      contentLabel="My Orders Modal"
+      contentLabel="Meus Pedidos"
       style={modalStyle}
     >
       <button
@@ -41,15 +49,22 @@ const MyOrdersModal = ({ isOpen, onRequestClose }) => {
         &#10006;
       </button>
       <h2>Meus Pedidos</h2>
-      <p style={modalStyle.text}>
-        Pedido 1: Produto A, Quantidade: 2
-      </p>
-      <p style={modalStyle.text}>
-        Pedido 2: Produto B, Quantidade: 1
-      </p>
-      <p style={modalStyle.text}>
-        Pedido 3: Produto C, Quantidade: 3
-      </p>
+      <ul>
+        {orders.map((order) => (
+          <li key={order.id}>
+            <p>ID do Pedido: {order.id}</p>
+            <p>Total: R$ {order.total.toFixed(2)}</p>
+            <p>Data: {new Date(order.date).toLocaleString()}</p>
+            <ul>
+              {order.items.map((item) => (
+                <li key={item.id}>
+                  {item.name} x {item.quantity}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
     </Modal>
   );
 };
