@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Footer from './Footer';
+import EditProfile from './EditProfile'; // Importe o componente EditProfile
+import MyOrdersModal from './MyOrdersModal'; // Importe o componente MyOrdersModal
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -64,6 +66,25 @@ const BackButton = styled.button`
 `;
 
 const Profile = ({ handleLogin }) => {
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+  const [isMyOrdersModalOpen, setIsMyOrdersModalOpen] = useState(false);
+
+  const openEditProfileModal = () => {
+    setIsEditProfileModalOpen(true);
+  };
+
+  const closeEditProfileModal = () => {
+    setIsEditProfileModalOpen(false);
+  };
+
+  const openMyOrdersModal = () => {
+    setIsMyOrdersModalOpen(true);
+  };
+  
+  const closeMyOrdersModal = () => {
+    setIsMyOrdersModalOpen(false);
+  };
+  
   const logout = () => {
     // Chama a função handleLogout quando o botão "Sair" é clicado
     if (handleLogin) {
@@ -80,11 +101,23 @@ const Profile = ({ handleLogin }) => {
       <h3>Andrea Davis</h3>
       <Email>andrea@domainname.com</Email>
       <Divider />
-      <Button>Editar Perfil</Button>
-      <Button>Meus Pedidos</Button>
+      <Button onClick={openEditProfileModal}>Editar Perfil</Button>
+      <Button onClick={openMyOrdersModal}>Meus Pedidos</Button>
       <Button onClick={logout}>Sair</Button>
 
       <Footer />
+
+      {/* Renderiza o modal de edição de perfil se isEditProfileModalOpen for true */}
+      {isEditProfileModalOpen && (
+        <EditProfile
+          isOpen={isEditProfileModalOpen}
+          onRequestClose={closeEditProfileModal}
+        />
+      )}
+      {isMyOrdersModalOpen && (
+        <MyOrdersModal isOpen={isMyOrdersModalOpen} onRequestClose={closeMyOrdersModal} />
+      )}
+
     </ProfileContainer>
   );
 };
