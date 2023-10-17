@@ -15,7 +15,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router basename="/lasermaxapp"> {/* Defina o basename como "/lasermaxapp" */}
       <div className="App">
         <Routes>
           <Route
