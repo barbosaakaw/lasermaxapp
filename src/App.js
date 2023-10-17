@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { isUserAuthenticated } from './auth/auth';
+import Login from './components/Login';
+import Content from './components/Content';
+import Profile from './components/Profile';
+import PasswordRecovery from './components/PasswordRecovery';
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(isUserAuthenticated());
+
+  const handleLogin = (status) => {
+    setLoggedIn(status);
+    console.log('Usuário está logado?', status);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              loggedIn ? <Content loggedIn={loggedIn} /> : <Login handleLogin={handleLogin} />
+            }
+          />
+          <Route
+            path="/perfil"
+            element={
+              loggedIn ? <Profile handleLogin={handleLogin} /> : <Login handleLogin={handleLogin} />
+            }
+          />
+          <Route
+            path="/recuperar-senha"
+            element={
+              loggedIn ? <Content loggedIn={loggedIn} /> : <PasswordRecovery />
+            }
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
