@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Footer from './Footer';
 import EditProfile from './EditProfile'; // Importe o componente EditProfile
 import MyOrdersModal from './MyOrdersModal'; // Importe o componente MyOrdersModal
+import About from './About'; // Importe o componente About
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -68,6 +69,7 @@ const BackButton = styled.button`
 const Profile = ({ handleLogin }) => {
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [isMyOrdersModalOpen, setIsMyOrdersModalOpen] = useState(false);
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
 
   const openEditProfileModal = () => {
     setIsEditProfileModalOpen(true);
@@ -75,6 +77,14 @@ const Profile = ({ handleLogin }) => {
 
   const closeEditProfileModal = () => {
     setIsEditProfileModalOpen(false);
+  };
+
+  const openAboutModal = () => {
+    setIsAboutModalOpen(true);
+  };
+
+  const closeAboutModal = () => {
+    setIsAboutModalOpen(false);
   };
 
   const openMyOrdersModal = () => {
@@ -103,6 +113,7 @@ const Profile = ({ handleLogin }) => {
       <Divider />
       <Button onClick={openEditProfileModal}>Editar Perfil</Button>
       <Button onClick={openMyOrdersModal}>Meus Pedidos</Button>
+      <Button onClick={openAboutModal}>Sobre Nós</Button>
       <Button onClick={logout}>Sair</Button>
 
       <Footer />
@@ -116,6 +127,9 @@ const Profile = ({ handleLogin }) => {
       )}
       {isMyOrdersModalOpen && (
         <MyOrdersModal isOpen={isMyOrdersModalOpen} onRequestClose={closeMyOrdersModal} />
+      )}
+      {isAboutModalOpen && (
+        <About isOpen={isAboutModalOpen} onRequestClose={closeAboutModal} />
       )}
 
     </ProfileContainer>
