@@ -17,7 +17,7 @@ function App() {
   };
 
   return (
-    <Router basename="/barbosaakaw/lasermaxapp"> {/* Defina o basename como "/lasermaxapp" */}
+    <Router basename="/lasermaxapp/barbosaakaw"> {/* Defina o basename como "/lasermaxapp" */}
       <div className="App">
         <Routes>
           <Route
