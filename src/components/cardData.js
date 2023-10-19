@@ -1,18 +1,18 @@
 export const cardData = {
     'Gravação': [
       {
-        title: 'Gravação - Card 1',
+        title: 'Serviços e Produtos com Gravação a Laser Fibra',
         favorite: false,
         added: false,
-        imageSrc: 'https://cdn.dooca.store/1286/posts/dreamstime-s-58978412.jpg?v=1632256363&webp=0',
-        description: 'Card 1 - Descrição para esse card!',
+        imageSrc: 'https://www.lasermax.com.br/wp-content/uploads/2020/06/gravacao-a-laser2.png',
+        description: 'Executamos serviços ou desenvolvemos produtos com Gravação a Laser personalizada, Materiais aceitos para gravação: Metais (Alumínio e Aço), Plásticos, Madeiras, Couros e Tecidos.',
       },
       {
-        title: 'Gravação - Card 2',
+        title: 'Serviços e Produtos com Corte, Gravação a Laser CO2 (Metal)',
         favorite: true,
         added: true,
-        imageSrc: 'https://cdn.dooca.store/1286/posts/dreamstime-s-58978412.jpg?v=1632256363&webp=0',
-        description: 'Card 2 - Descrição para esse card!',
+        imageSrc: 'https://www.lasermax.com.br/wp-content/uploads/2020/06/gravacao-laser2.png',
+        description: 'Executamos serviços ou desenvolvemos produtos com Corte e Gravação a Laser CO2 personalizada. Corte em Acrílico, Madeiras (MDF), Aço plano, Plásticos, Tecidos e Couro. Gravação em Acrílico, Madeiras, Vidros, Couro, Tecidos, Espelhos e Metais (alguns).',
       },
       {
         title: 'Gravação - Card 3',

@@ -19,9 +19,11 @@ const Card = styled.a`
   border-bottom-right-radius: 30px;
   margin-right: 10px;
   padding: 10px;
-  min-width: 150px;
+  min-width: 100px;
+  min-max: 200px;
   background-color: #FFA500;
   color: #fff;
+  font-size: 10px;
   display: block;
   height: 220px;
 `;
